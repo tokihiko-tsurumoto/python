@@ -6,7 +6,7 @@ from typing import ClassVar
 # frozen=Trueにすることでインスタンス変数を変更できないようにできる
 # インスタンス変数を変更しようとするとオーバーライドされた__setattr__()がFrozenInstanceErrorを送出する
 # 自動生成されるコンストラクタの中では、オーバーライドされた__setattr__()ではなく、object.__setattr__()が使われる
-@dataclass(frozen=True)
+@dataclass(frozen=False)
 class C:
     # インスタンス変数
     i: int = 0
@@ -29,8 +29,7 @@ object.__setattr__(c, "i", 2)
 
 
 # C.jに代入することでクラス変数を変更できる
-# c.jやC().jに代入した場合、インスタンス変数として新たにjが生成される（この例ではfrozen=Trueにしているので代入できない）
-C.j = 1
+# c.jに代入した場合、インスタンス変数として新たにjが生成される（この例ではfrozen=Trueにしているので代入できない）
 
 
 print(c.show())
