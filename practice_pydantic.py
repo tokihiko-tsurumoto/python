@@ -29,7 +29,9 @@ except ValidationError as e:
 
 # 自動変換可能なデータでインスタンスを作成
 try:
-    user = User(id="2", name="John", age="20")
+    # 以下のように可変長引数でデータを渡すこともできる
+    data = {"id": "2", "name": "John", "age": "20"}
+    user = User(**data)
     print(user)
 except ValidationError as e:
     print(e)
